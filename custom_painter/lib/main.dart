@@ -49,6 +49,11 @@ class Painter extends CustomPainter {
       ..strokeWidth = 4.0
       ..color = Colors.indigo;
 
+    final horizontalLine = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 4.0
+      ..color = Colors.indigo;
+
 //  final redPaint = Paint()
 //  ..style = PaintingStyle.fill
 //  ..color= Colors.red;
@@ -68,20 +73,37 @@ class Painter extends CustomPainter {
     canvas.drawOval(Rect.fromLTWH(size.width - 120, 250, 100, 100), paint);
 
     //mouth
+    final p1 = Offset(-90, 0);
+    final p2 = Offset(90, 0);
+
+
+
+
+
 
     final mouth = Path();
+    final line = Path();
+    line.addRect(Rect.fromLTWH(65, 180, 200, 1));
+
+
+
     mouth.moveTo(size.width*0.8, size.height*0.6);
     
     mouth.arcToPoint(
       Offset(size.width*0.2, size.height*0.6),
       radius: Radius.circular(150)
     );
+
     mouth.arcToPoint(
         Offset(size.width*0.8, size.height*0.6),
         radius: Radius.circular(200),
       clockwise: false
     );
     canvas.drawPath(mouth,paint);
+    canvas.drawPath(line, horizontalLine);
+
+
+
   }
 
   @override
